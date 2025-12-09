@@ -1,2 +1,57 @@
-# GET /
-GET http://localhost:8888/
+# TEMP TOKEN : 
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiZW1haWwiOiIyMXhpZXBhdHJpY2VAZ21haWwuY29tIiwiaWF0IjoxNzY1MjY0ODIwLCJleHAiOjE3NjUzNTEyMjB9.LPh_ICWpANoEVWLjEProqIIoqJKs--q3d86LuiwdbZU
+
+# AUTH
+### GET /
+GET http://localhost:8888
+
+### Check email
+POST http://localhost:8888/auth/checkEmail
+Content-Type: application/json
+
+{
+    "email": "pvs@mail.com"
+}
+
+### Register
+POST http://localhost:8888/auth/register
+Content-Type: application/json
+
+{
+    "email": "pvs@mail.com",
+    "password" : "12345678",
+    "name" : "pattie",
+    "type" : "manual"
+}
+
+### Login
+POST http://localhost:8888/auth/login
+Content-Type: application/json
+
+{
+    "email": "21xiepatrice@gmail.com",
+    "password" : "12345678",
+    "type" : "manual"
+}
+
+### Forgot Password
+GET http://localhost:8888/auth/forgot-password
+Content-Type: application/json
+
+{
+    "email": "21xiepatrice@gmail.com"
+}
+
+
+### Forgot Password
+PUT http://localhost:8888/auth/reset-password
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiZW1haWwiOiIyMXhpZXBhdHJpY2VAZ21haWwuY29tIiwiaWF0IjoxNzY1MjY2MzQ2LCJleHAiOjE3NjUyNjY5NDZ9.MPBeQjj0l7a91tPgmLs27jJrxMZkVXrfuUbL0PAa6zE",
+    "newPassword" : "12345678"
+}
+
+
+
+# CATEGORIES

@@ -14,22 +14,22 @@ router.post('/add', async (req, res) => {
 
         // Insert with unique validation
         const result = await pool.query(
-            "INSERT INTO categories (user_id, name) VALUES ($1, $2) RETURNING *",
+            "INSERT INTO wallets (user_id, name) VALUES ($1, $2) RETURNING *",
             [user_id, name]
         );
 
         return res.json({
-            message: "Category created",
+            message: "Wallet created",
             data: result.rows[0],
         });
     } catch (error) {
-        console.error("Add category error:", error);
+        console.error("Add wallet error:", error);
 
         // Handle unique constraint error
         if (error.code === "23505") {
             return res
                 .status(400)
-                .json({ message: "Category name already exists for this user" });
+                .json({ message: "Wallet name already exists for this user" });
         }
 
         return res.status(500).json({ message: "Server error" });
@@ -48,8 +48,8 @@ router.get('/getAll', async (req, res) => {
     }
 
     const result = await db.query(
-      `SELECT id, user_id, name, created_at, updated_at
-       FROM categories
+      `SELECT *
+       FROM wallets
        WHERE user_id = $1
        ORDER BY name ASC`,
       [userId]
@@ -61,7 +61,7 @@ router.get('/getAll', async (req, res) => {
     });
 
   } catch (error) {
-    console.error("getAll categories error:", error);
+    console.error("getAll wallets error:", error);
     res.status(500).json({
       success: false,
       message: "Internal server error"
@@ -78,7 +78,7 @@ router.put('/update', async (req, res) => {
     }
 
     const result = await pool.query(
-      `UPDATE categories 
+      `UPDATE wallets 
        SET name = $1, mod_date = NOW()
        WHERE id = $2 AND user_id = $3
        RETURNING *`,
@@ -86,20 +86,20 @@ router.put('/update', async (req, res) => {
     );
 
     if (result.rowCount === 0) {
-      return res.status(404).json({ message: "Category not found" });
+      return res.status(404).json({ message: "Wallet not found" });
     }
 
     return res.json({
-      message: "Category updated",
+      message: "Wallet updated",
       data: result.rows[0],
     });
   } catch (error) {
-    console.error("Update category error:", error);
+    console.error("Update wallet error:", error);
 
     if (error.code === "23505") {
       return res
         .status(400)
-        .json({ message: "Category name already exists for this user" });
+        .json({ message: "Wallet name already exists for this user" });
     }
 
     return res.status(500).json({ message: "Server error" });
@@ -115,17 +115,17 @@ try {
     }
 
     const result = await pool.query(
-      "DELETE FROM categories WHERE id = $1 AND user_id = $2 RETURNING *",
+      "DELETE FROM wallets WHERE id = $1 AND user_id = $2 RETURNING *",
       [id, user_id]
     );
 
     if (result.rowCount === 0) {
-      return res.status(404).json({ message: "Category not found" });
+      return res.status(404).json({ message: "Wallet not found" });
     }
 
-    return res.json({ message: "Category deleted successfully" });
+    return res.json({ message: "Wallet deleted successfully" });
   } catch (error) {
-    console.error("Delete category error:", error);
+    console.error("Delete wallet error:", error);
     return res.status(500).json({ message: "Server error" });
   }
 })
