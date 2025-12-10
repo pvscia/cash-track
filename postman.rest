@@ -1,5 +1,5 @@
 # TEMP TOKEN : 
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiZW1haWwiOiIyMXhpZXBhdHJpY2VAZ21haWwuY29tIiwiaWF0IjoxNzY1MjY0ODIwLCJleHAiOjE3NjUzNTEyMjB9.LPh_ICWpANoEVWLjEProqIIoqJKs--q3d86LuiwdbZU
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiZW1haWwiOiIyMXhpZXBhdHJpY2VAZ21haWwuY29tIiwiaWF0IjoxNzY1MzI5MDY4LCJleHAiOjE3NjU0MTU0Njh9.aacHQYr3HiOPLu-7haGuEbwXAVwWcVHfbwJxSLPgjqk
 
 # AUTH
 ### GET /
@@ -55,3 +55,112 @@ Content-Type: application/json
 
 
 # CATEGORIES
+### Add Categories
+POST http://localhost:8888/categories/add
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Content-Type: application/json
+
+{
+    "name" : "Category 6"
+}
+
+
+### Get Categories
+GET http://localhost:8888/categories/getAll
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+
+
+### Edit Categories
+PUT http://localhost:8888/categories/update
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Content-Type: application/json
+
+{
+    "id" : 8,
+    "name" : "Category 3"
+}
+
+### Delete Categories
+DELETE http://localhost:8888/categories/delete
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Content-Type: application/json
+
+{
+    "id" : 12
+}
+
+
+# WALLETS
+### Add Wallets
+POST http://localhost:8888/wallets/add
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Content-Type: application/json
+
+{
+    "name" : "Wallet 1"
+}
+
+
+### Get Wallets
+GET http://localhost:8888/wallets/getAll
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+
+
+### Edit Wallets
+PUT http://localhost:8888/wallets/update
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Content-Type: application/json
+
+{
+    "id" : 2,
+    "name" : "Wallet 3"
+}
+
+### Delete Wallets
+DELETE http://localhost:8888/wallets/delete
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Content-Type: application/json
+
+{
+    "id" : 2
+}
+
+
+
+# TARGETS
+### Add Targets
+POST http://localhost:8888/targets/add
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Content-Type: application/json
+
+{
+    "name" : "Target 3",
+    "amount" : 300000045,
+    "walletId" : 10
+}
+
+
+### Get Targets
+GET http://localhost:8888/targets/getAll
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+
+
+### Edit Targets
+PUT http://localhost:8888/targets/update
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Content-Type: application/json
+
+{
+    "id" : 5,
+    "name" : "Target 3",
+    "amount" : 1550
+}
+
+### Delete Targets
+DELETE http://localhost:8888/targets/delete
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Content-Type: application/json
+
+{
+    "id" : 5
+}

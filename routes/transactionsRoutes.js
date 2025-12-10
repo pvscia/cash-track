@@ -17,9 +17,9 @@ router.post('/add', async (req, res) => {
 
         const result = await db.query(
             `INSERT INTO transactions
-      (category_id, wallet_id, amount, spend_type, create_date, mod_date)
-      VALUES ($1, $2, $3, $4, NOW(), NOW())
-      RETURNING *`,
+            (category_id, wallet_id, amount, spend_type, create_date)
+            VALUES ($1, $2, $3, $4, NOW())
+            RETURNING *`,
             [category_id, wallet_id, amount, spend_type]
         );
 
