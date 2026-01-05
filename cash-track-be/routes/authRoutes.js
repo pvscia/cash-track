@@ -100,10 +100,7 @@ router.post("/register", async (req, res) => {
 
       const user = newUser.rows[0];
 
-      // Generate token
-      const token = generateToken(user.id);
-
-      return res.json({ token, user });
+      return res.json({ user });
     }
 
     // ---------------------------
@@ -198,9 +195,9 @@ router.post("/login", async (req, res) => {
       await pool.query(
         `UPDATE users
         SET last_login = NOW()
-        WHERE id = $1`,[user.id]
+        WHERE id = $1`, [user.id]
       )
-      
+
       // create JWT
       const token = jwt.sign(
         {
@@ -265,7 +262,7 @@ router.post("/login", async (req, res) => {
       await pool.query(
         `UPDATE users
         SET last_login = NOW()
-        WHERE id = $1`,[user.id]
+        WHERE id = $1`, [user.id]
       )
 
       // create JWT

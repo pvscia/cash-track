@@ -1,11 +1,14 @@
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiZW1haWwiOiIyMXhpZXBhdHJpY2VAZ21haWwuY29tIiwiaWF0IjoxNzY1NTAzODcwLCJleHAiOjE3NjU1OTAyNzB9.n8K3NywLnynnTPHvmJ_YsT9caYfR5z8kf1_ksnDs6A8
+@baseUrl = http://localhost:8888
+@prodUrl = https://cash-track-by-pat.vercel.app/
+@currUrl = {{prodUrl}}
 
 # AUTH
 ### GET /
-GET http://localhost:8888
+GET {{currUrl}}
 
 ### Check email
-POST http://localhost:8888/auth/checkEmail
+POST {{currUrl}}/auth/checkEmail
 Content-Type: application/json
 
 {
@@ -13,7 +16,7 @@ Content-Type: application/json
 }
 
 ### Register
-POST http://localhost:8888/auth/register
+POST {{currUrl}}/auth/register
 Content-Type: application/json
 
 {
@@ -24,7 +27,7 @@ Content-Type: application/json
 }
 
 ### Login
-POST http://localhost:8888/auth/login
+POST {{currUrl}}/auth/login
 Content-Type: application/json
 
 {
@@ -34,7 +37,7 @@ Content-Type: application/json
 }
 
 ### Forgot Password
-GET http://localhost:8888/auth/forgot-password
+GET {{currUrl}}/auth/forgot-password
 Content-Type: application/json
 
 {
@@ -43,7 +46,7 @@ Content-Type: application/json
 
 
 ### Forgot Password
-PUT http://localhost:8888/auth/reset-password
+PUT {{currUrl}}/auth/reset-password
 Content-Type: application/json
 
 {
@@ -55,7 +58,7 @@ Content-Type: application/json
 
 # CATEGORIES
 ### Add Categories
-POST http://localhost:8888/categories/add
+POST {{currUrl}}/categories/add
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -65,12 +68,12 @@ Content-Type: application/json
 
 
 ### Get Categories
-GET http://localhost:8888/categories/getAll
+GET {{currUrl}}/categories/getAll
 Authorization: {{token}}
 
 
 ### Edit Categories
-PUT http://localhost:8888/categories/update
+PUT {{currUrl}}/categories/update
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -80,7 +83,7 @@ Content-Type: application/json
 }
 
 ### Delete Categories
-DELETE http://localhost:8888/categories/delete
+DELETE {{currUrl}}/categories/delete
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -91,7 +94,7 @@ Content-Type: application/json
 
 # WALLETS
 ### Add Wallets
-POST http://localhost:8888/wallets/add
+POST {{currUrl}}/wallets/add
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -101,12 +104,12 @@ Content-Type: application/json
 
 
 ### Get Wallets
-GET http://localhost:8888/wallets/getAll
+GET {{currUrl}}/wallets/getAll
 Authorization: {{token}}
 
 
 ### Edit Wallets
-PUT http://localhost:8888/wallets/update
+PUT {{currUrl}}/wallets/update
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -116,7 +119,7 @@ Content-Type: application/json
 }
 
 ### Delete Wallets
-DELETE http://localhost:8888/wallets/delete
+DELETE {{currUrl}}/wallets/delete
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -128,7 +131,7 @@ Content-Type: application/json
 
 # TARGETS
 ### Add Targets
-POST http://localhost:8888/targets/add
+POST {{currUrl}}/targets/add
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -139,12 +142,12 @@ Content-Type: application/json
 
 
 ### Get Targets
-GET http://localhost:8888/targets/getAll
+GET {{currUrl}}/targets/getAll
 Authorization: {{token}}
 
 
 ### Edit Targets
-PUT http://localhost:8888/targets/update
+PUT {{currUrl}}/targets/update
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -155,7 +158,7 @@ Content-Type: application/json
 }
 
 ### Delete Targets
-DELETE http://localhost:8888/targets/delete
+DELETE {{currUrl}}/targets/delete
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -167,7 +170,7 @@ Content-Type: application/json
 # Transaction
 
 ### Add
-POST http://localhost:8888/transactions/add
+POST {{currUrl}}/transactions/add
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -180,15 +183,15 @@ Content-Type: application/json
 }
 
 ### Get All
-GET http://localhost:8888/transactions/all
+GET {{currUrl}}/transactions/all
 Authorization: {{token}}
 
 ### Get Specific
-GET http://localhost:8888/transactions/1
+GET {{currUrl}}/transactions/1
 Authorization: {{token}}
 
 ### Update
-PUT http://localhost:8888/transactions/update
+PUT {{currUrl}}/transactions/update
 Authorization: {{token}}
 Content-Type: application/json
 
@@ -202,7 +205,7 @@ Content-Type: application/json
 }
 
 ### Delete 
-DELETE http://localhost:8888/transactions/delete
+DELETE {{currUrl}}/transactions/delete
 Authorization: {{token}}
 Content-Type: application/json
 
