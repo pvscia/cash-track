@@ -8,7 +8,7 @@ router.post('/add', async (req, res) => {
   try {
     const userId = req.userId;
 
-    const { name, amount, walletId } = req.body;
+    const { name, amount } = req.body;
 
     if (!userId || !name || !amount) {
       return res.status(400).json({ message: "user_id, amount, and name are required" });
@@ -16,8 +16,8 @@ router.post('/add', async (req, res) => {
 
     // Insert with unique validation
     const result = await pool.query(
-      "INSERT INTO targets (user_id, name,amount,wallet_id) VALUES ($1, $2, $3,$4) RETURNING *",
-      [userId, name, amount, walletId]
+      "INSERT INTO targets (user_id, name,amount) VALUES ($1, $2, $3) RETURNING *",
+      [userId, name, amount]
     );
 
     return res.json({
@@ -75,7 +75,7 @@ router.put('/update', async (req, res) => {
   try {
     const userId = req.userId;
 
-    const { id, name, amount, walletId } = req.body;
+    const { id, name, amount } = req.body;
 
     if (!id || !userId || !name || !amount) {
       return res.status(400).json({ message: "id, amount, user_id, and name are required" });
@@ -83,10 +83,10 @@ router.put('/update', async (req, res) => {
 
     const result = await pool.query(
       `UPDATE targets 
-       SET name = $1, mod_date = NOW(), amount = $4, wallet_id = $5
+       SET name = $1, mod_date = NOW(), amount = $4
        WHERE id = $2 AND user_id = $3
        RETURNING *`,
-      [name, id, userId, amount, walletId]
+      [name, id, userId, amount]
     );
 
     if (result.rowCount === 0) {

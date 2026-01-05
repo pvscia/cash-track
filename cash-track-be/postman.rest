@@ -1,5 +1,4 @@
-# TEMP TOKEN : 
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiZW1haWwiOiIyMXhpZXBhdHJpY2VAZ21haWwuY29tIiwiaWF0IjoxNzY1MzI5MDY4LCJleHAiOjE3NjU0MTU0Njh9.aacHQYr3HiOPLu-7haGuEbwXAVwWcVHfbwJxSLPgjqk
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiZW1haWwiOiIyMXhpZXBhdHJpY2VAZ21haWwuY29tIiwiaWF0IjoxNzY1NTAzODcwLCJleHAiOjE3NjU1OTAyNzB9.n8K3NywLnynnTPHvmJ_YsT9caYfR5z8kf1_ksnDs6A8
 
 # AUTH
 ### GET /
@@ -57,7 +56,7 @@ Content-Type: application/json
 # CATEGORIES
 ### Add Categories
 POST http://localhost:8888/categories/add
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 Content-Type: application/json
 
 {
@@ -67,12 +66,12 @@ Content-Type: application/json
 
 ### Get Categories
 GET http://localhost:8888/categories/getAll
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 
 
 ### Edit Categories
 PUT http://localhost:8888/categories/update
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 Content-Type: application/json
 
 {
@@ -82,7 +81,7 @@ Content-Type: application/json
 
 ### Delete Categories
 DELETE http://localhost:8888/categories/delete
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 Content-Type: application/json
 
 {
@@ -93,7 +92,7 @@ Content-Type: application/json
 # WALLETS
 ### Add Wallets
 POST http://localhost:8888/wallets/add
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 Content-Type: application/json
 
 {
@@ -103,12 +102,12 @@ Content-Type: application/json
 
 ### Get Wallets
 GET http://localhost:8888/wallets/getAll
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 
 
 ### Edit Wallets
 PUT http://localhost:8888/wallets/update
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 Content-Type: application/json
 
 {
@@ -118,7 +117,7 @@ Content-Type: application/json
 
 ### Delete Wallets
 DELETE http://localhost:8888/wallets/delete
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 Content-Type: application/json
 
 {
@@ -130,24 +129,23 @@ Content-Type: application/json
 # TARGETS
 ### Add Targets
 POST http://localhost:8888/targets/add
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 Content-Type: application/json
 
 {
     "name" : "Target 3",
-    "amount" : 300000045,
-    "walletId" : 10
+    "amount" : 300000045
 }
 
 
 ### Get Targets
 GET http://localhost:8888/targets/getAll
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 
 
 ### Edit Targets
 PUT http://localhost:8888/targets/update
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 Content-Type: application/json
 
 {
@@ -158,9 +156,65 @@ Content-Type: application/json
 
 ### Delete Targets
 DELETE http://localhost:8888/targets/delete
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiaWF0IjoxNzY1MzI5NTI3LCJleHAiOjE3NjU0MTU5Mjd9.siElUs3umsMLPbLyebXjoy6HvIHD2IU6DFQnE40AwmQ
+Authorization: {{token}}
 Content-Type: application/json
 
 {
     "id" : 5
 }
+
+
+# Transaction
+
+### Add
+POST http://localhost:8888/transactions/add
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "categoryId": 5,
+    "walletId": 3,
+    "amount": 2000,
+    "spendType": "Income",
+    "spendDate": "2030-10-04T00:00:00Z"
+}
+
+### Get All
+GET http://localhost:8888/transactions/all
+Authorization: {{token}}
+
+### Get Specific
+GET http://localhost:8888/transactions/1
+Authorization: {{token}}
+
+### Update
+PUT http://localhost:8888/transactions/update
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "id" : 1,
+    "categoryId": 6,
+    "walletId": 3,
+    "amount": 2000,
+    "spendType": "Income",
+    "spendDate": "2030-10-10T00:00:00Z"
+}
+
+### Delete 
+DELETE http://localhost:8888/transactions/delete
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+    "id" : 1
+}
+
+
+
+
+
+
+
+
+

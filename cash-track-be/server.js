@@ -8,7 +8,7 @@ import targetsRoutes from './routes/targetsRoutes.js'
 import transactionsRoutes from './routes/transactionsRoutes.js'
 import middleware from './middleware/middleware.js'
 
-const PORT = process.env.PORT || 5003
+const PORT = process.env.PORT_BE || 5003
 const app = express()
 app.use(cors());
 app.use(express.json());

@@ -6,21 +6,21 @@ const router = express.Router()
 
 router.post('/add', async (req, res) => {
     try {
-        const { category_id, wallet_id, amount, spend_type } = req.body;
+        const { categoryId, walletId, amount, spendType,spendDate } = req.body;
 
-        if (!category_id || !wallet_id || !amount || spend_type == null) {
+        if (!categoryId || !walletId || !amount || spendType == null|| spendDate == null) {
             return res.status(400).json({
                 success: false,
-                message: "category_id, wallet_id, amount, spend_type are required"
+                message: "category_id, wallet_id, amount, spend_type, and spendDate are required"
             });
         }
 
-        const result = await db.query(
+        const result = await pool.query(
             `INSERT INTO transactions
-            (category_id, wallet_id, amount, spend_type, create_date)
-            VALUES ($1, $2, $3, $4, NOW())
+            (category_id, wallet_id, amount, spend_type, spend_date)
+            VALUES ($1, $2, $3, $4, $5)
             RETURNING *`,
-            [category_id, wallet_id, amount, spend_type]
+            [categoryId, walletId, amount, spendType,spendDate]
         );
 
         res.json({
@@ -36,7 +36,7 @@ router.post('/add', async (req, res) => {
 
 router.get('/all', async (req, res) => {
   try {
-    const userId = req.user.id; // from JWT middleware
+    const userId = req.userId; // from JWT middleware
 
     let { 
       wallet_id, 
@@ -91,7 +91,7 @@ router.get('/all', async (req, res) => {
       ORDER BY t.create_date DESC
     `;
 
-    const dataResult = await db.query(transactionsQuery, params);
+    const dataResult = await pool.query(transactionsQuery, params);
 
     // Fetch sum of amounts
     const sumQuery = `
@@ -101,7 +101,7 @@ router.get('/all', async (req, res) => {
       ${whereSQL}
     `;
 
-    const sumResult = await db.query(sumQuery, params);
+    const sumResult = await pool.query(sumQuery, params);
 
     res.json({
       success: true,
@@ -130,8 +130,13 @@ router.get('/:id', async (req, res) => {
     try {
         const { id } = req.params;
 
-        const result = await db.query(
-            `SELECT * FROM transactions WHERE id = $1`,
+        const result = await pool.query(
+            `SELECT t.*, 
+            c.name AS category_name,
+            w.name AS wallet_name FROM transactions t 
+            JOIN categories c ON c.id = t.category_id
+            JOIN wallets w ON w.id = t.wallet_id 
+            WHERE t.id = $1`,
             [id]
         );
 
@@ -152,18 +157,19 @@ router.get('/:id', async (req, res) => {
 
 router.put('/update', async (req, res) => {
     try {
-        const { id, category_id, wallet_id, amount, spend_type } = req.body;
+        const { id, categoryId, walletId, amount, spendType, spendDate } = req.body;
 
-        const result = await db.query(
+        const result = await pool.query(
             `UPDATE transactions
        SET category_id = $1,
            wallet_id = $2,
            amount = $3,
            spend_type = $4,
+           spend_date = $6,
            mod_date = NOW()
        WHERE id = $5
        RETURNING *`,
-            [category_id, wallet_id, amount, spend_type, id]
+            [categoryId, walletId, amount, spendType, id,spendDate]
         );
 
         if (result.rows.length === 0) {
@@ -185,7 +191,7 @@ router.delete('/delete', async (req, res) => {
     try {
         const { id } = req.body;
 
-        const result = await db.query(
+        const result = await pool.query(
             `DELETE FROM transactions WHERE id = $1 RETURNING *`,
             [id]
         );
