@@ -1,7 +1,7 @@
 import axios from "axios";
 import { redirectToLogin } from "../utils/navigator";
 
-var API_URL = "http://localhost:8080/";
+var API_URL = "http://localhost:8888/";
 const AxiosApi = axios.create({
   baseURL: API_URL,
 });

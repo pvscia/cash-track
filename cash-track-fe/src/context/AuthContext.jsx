@@ -24,7 +24,9 @@ export function AuthProvider({ children }) {
   // 👉 Single function handles everything
   const login = async (credentials) => {
     const data = await loginApi(credentials);
-
+    if (!data.token) {
+      throw new Error(data.message || "Invalid credentials");
+    }
     setToken(data.token);
     setUser(data.user);
 
@@ -36,7 +38,7 @@ export function AuthProvider({ children }) {
     setToken(null);
     setUser(null);
     localStorage.clear();
-    
+
     navigateTo("/login");
 
   };

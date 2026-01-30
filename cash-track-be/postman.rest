@@ -1,7 +1,7 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzIiwiZW1haWwiOiIyMXhpZXBhdHJpY2VAZ21haWwuY29tIiwiaWF0IjoxNzY1NTAzODcwLCJleHAiOjE3NjU1OTAyNzB9.n8K3NywLnynnTPHvmJ_YsT9caYfR5z8kf1_ksnDs6A8
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwIiwiZW1haWwiOiIyMXhpZXBhdHJpY2VAZ21haWwuY29tIiwiaWF0IjoxNzY5NjUxODc3LCJleHAiOjE3Njk3MzgyNzd9.w1FZpH3Av7OD5sRiMqtbW9mp1H6o2tJiCcnbqwrfYGk
 @baseUrl = http://localhost:8888
 @prodUrl = https://cash-track-by-pat.vercel.app/
-@currUrl = {{prodUrl}}
+@currUrl = {{baseUrl}}
 
 # AUTH
 ### GET /
@@ -31,13 +31,13 @@ POST {{currUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "email": "21xiepatrice@gmail.com",
+    "email": "pvs@mail.com",
     "password" : "12345678",
     "type" : "manual"
 }
 
 ### Forgot Password
-GET {{currUrl}}/auth/forgot-password
+POST {{currUrl}}/auth/forgot-password
 Content-Type: application/json
 
 {

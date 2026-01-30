@@ -1,8 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../auth/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { forgotPasswordApi } from "../../api/AuthApi";
+import Swal from "sweetalert2";
 
 export default function ForgotPassword() {
   const { login } = useAuth();
@@ -12,20 +14,36 @@ export default function ForgotPassword() {
     initialValues: {
       email: "",
     },
+    validateOnMount: true,
     validationSchema: Yup.object({
       email: Yup.string()
         .required("Must be filled")
         .email("Invalid email format"),
     }),
 
-    onSubmit: async (values) => {
-      try {
-        await login(values);
-        navigate("/");
-      } catch {
-        alert("Login failed");
-      }
-    },
+     onSubmit: async (values) => {
+          try {
+            Swal.fire({
+              title: "Submitting...",
+              allowOutsideClick: false,
+              didOpen: () => Swal.showLoading(),
+            });
+            const data = await forgotPasswordApi(values);
+            Swal.close();
+            navigate("/login");
+            Swal.fire("Success", data.message, "success");
+          } catch (err) {
+            Swal.close();
+    
+            Swal.fire({
+              icon: "error",
+              title: "Submit Failed",
+              text: err.error,
+              background: "#020617",
+              color: "#fff",
+            });
+          }
+        },
   });
 
   return (

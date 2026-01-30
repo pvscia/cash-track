@@ -1,8 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../auth/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Swal from "sweetalert2";
+
 
 export default function Login() {
   const { login } = useAuth();
@@ -12,7 +14,9 @@ export default function Login() {
     initialValues: {
       email: "",
       password: "",
+      type: "manual"
     },
+    validateOnMount: true,
     validationSchema: Yup.object({
       email: Yup.string()
         .required("Must be filled")
@@ -24,12 +28,27 @@ export default function Login() {
 
     onSubmit: async (values) => {
       try {
+        Swal.fire({
+          title: "Logging in...",
+          allowOutsideClick: false,
+          didOpen: () => Swal.showLoading(),
+        });
         await login(values);
+        Swal.close();
         navigate("/");
       } catch {
-        alert("Login failed");
+        Swal.close();
+
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: "Check your credentials",
+          background: "#020617",
+          color: "#fff",
+        });
       }
-    },
+    }
+
   });
 
   return (

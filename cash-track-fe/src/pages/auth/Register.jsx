@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../auth/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
+import { registerApi } from "../../api/AuthApi";
 
 
 export default function Register() {
@@ -12,11 +13,17 @@ export default function Register() {
 
   const formik = useFormik({
     initialValues: {
+      name: "",
       email: "",
       password: "",
-      confPassword: ""
+      confPassword: "",
+      type: "manual"
     },
+    validateOnMount: true,
     validationSchema: Yup.object({
+      name: Yup.string()
+        .required("Must be filled"),
+
       email: Yup.string()
         .required("Must be filled")
         .email("Invalid email format"),
@@ -33,16 +40,25 @@ export default function Register() {
 
     onSubmit: async (values) => {
       try {
-        await login(values);
-        navigate("/");
-        // Swal.fire({
-        //   title: "Success!",
-        //   text: "Login successful",
-        //   icon: "success",
-        // });
+        Swal.fire({
+          title: "Registering...",
+          allowOutsideClick: false,
+          didOpen: () => Swal.showLoading(),
+        });
+        await registerApi(values);
+        Swal.close();
+        navigate("/login");
+        Swal.fire("Success", "Register success", "success");
+      } catch (err) {
+        Swal.close();
 
-      } catch {
-        alert("Register failed");
+        Swal.fire({
+          icon: "error",
+          title: "Register Failed",
+          text: err.error,
+          background: "#020617",
+          color: "#fff",
+        });
       }
     },
   });
@@ -55,6 +71,30 @@ export default function Register() {
         <h4 className="text-lg text-gray-400 mb-8">Register an account</h4>
 
         <form onSubmit={formik.handleSubmit} className="space-y-3">
+
+          <div>
+            <label className="block text-gray-300 mb-2">
+              Name
+            </label>
+
+            <input
+              type="text"
+              placeholder="Enter your name"
+              {...formik.getFieldProps("name")}
+              className={`w-full bg-slate-900 text-white px-4 py-3 rounded-lg border 
+                
+                ${formik.touched.name && formik.errors.name
+                  ? "border-red-500"
+                  : "border-gray-600"
+                }`}
+            />
+
+            {formik.touched.name && formik.errors.name && (
+              <p className="text-red-400 text-sm mt-1">
+                {formik.errors.name}
+              </p>
+            )}
+          </div>
 
           <div>
             <label className="block text-gray-300 mb-2">

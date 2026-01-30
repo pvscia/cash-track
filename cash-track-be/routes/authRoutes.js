@@ -295,7 +295,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/forgot-password", async (req, res) => {
+router.post("/forgot-password", async (req, res) => {
   try {
     const { email } = req.body;
 
