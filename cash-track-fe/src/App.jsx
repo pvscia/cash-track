@@ -2,10 +2,10 @@ import { useEffect } from 'react'
 import { AuthProvider } from './context/AuthContext';
 import Middleware from './routes/Middleware';
 import { BrowserRouter, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import { setNavigate } from './utils/navigator';
 import { authRoutes, publicRoutes } from './routes/Routes';
 import { createTheme, ThemeProvider } from '@mui/material';
 import MainLayout from '../components/layout/MainLayout';
+import { setNavigate } from './utils/navigator';
 
 export default function App() {
   function NavigationHandler() {
