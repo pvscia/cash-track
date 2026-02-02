@@ -5,7 +5,7 @@ import { BrowserRouter, Navigate, Route, Routes, useNavigate } from 'react-route
 import { authRoutes, publicRoutes } from './routes/Routes';
 import { createTheme, ThemeProvider } from '@mui/material';
 import MainLayout from '../components/layout/MainLayout';
-import { setNavigate } from './utils/navigator';
+import { setNavigate } from './utils/Navigator';
 
 export default function App() {
   function NavigationHandler() {

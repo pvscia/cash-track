@@ -1,5 +1,5 @@
 import axios from "axios";
-import { redirectToLogin } from "../utils/navigator";
+import { redirectToLogin } from "../utils/Navigator";
 
 // var API_URL = "http://localhost:8888/";
 var API_URL = "https://cash-track-by-pat.vercel.app/";
