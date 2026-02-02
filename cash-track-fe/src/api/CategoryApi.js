@@ -1,4 +1,4 @@
-import AxiosApi from "./axiosApi";
+import AxiosApi from "./AxiosApi";
 
 export const getCategoryApi = async () => {
   try {
