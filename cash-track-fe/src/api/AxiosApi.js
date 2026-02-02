@@ -1,7 +1,8 @@
 import axios from "axios";
 import { redirectToLogin } from "../utils/navigator";
 
-var API_URL = "http://localhost:8888/";
+// var API_URL = "http://localhost:8888/";
+var API_URL = "https://cash-track-by-pat.vercel.app/";
 const AxiosApi = axios.create({
   baseURL: API_URL,
 });
